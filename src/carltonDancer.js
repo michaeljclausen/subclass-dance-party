@@ -1,21 +1,20 @@
-var MovingDancer = function(top, left, timeBetweenSteps) {
+var CarltonDancer = function(top, left, timeBetweenSteps) {
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
   Dancer.call(this, top, left, timeBetweenSteps);
   //var oldStep = this.prototype.step;
 };
 
-MovingDancer.prototype = Object.create(Dancer.prototype);
-MovingDancer.prototype.constructor = MovingDancer;
-MovingDancer.prototype.oldStep = Dancer.prototype.step;
+CarltonDancer.prototype = Object.create(Dancer.prototype);
+CarltonDancer.prototype.constructor = CarltonDancer;
+CarltonDancer.prototype.oldStep = Dancer.prototype.step;
 
 var index = 0;
-MovingDancer.prototype.step = function() {
-  this.timeBetweenSteps = 2000;
+CarltonDancer.prototype.step = function() {
   if (this.$node.hasClass('lineUp')) {
+  
   } else {
     let left = Math.random() * 1500;
-    let top = Math.random() * 1000;
     // let colorR = Math.random() * 255;
     // let colorG = Math.random() * 255;
     // let colorB = Math.random() * 255;
@@ -25,14 +24,13 @@ MovingDancer.prototype.step = function() {
     // See http://api.jquery.com/category/effects/ for this and
     // other effects you can use on a jQuery-wrapped html tag.
     this.$node.animate({
-      left: left,
-      top: top,
+      left: left
     }, this.timeBetweenSteps, function() {
       // Animation complete.
     });
-    this.$node.addClass('movingDancer');
+    this.$node.addClass('carltonDancer');
+    this.$node.removeClass('dancer');
     
   }
   
 };
-

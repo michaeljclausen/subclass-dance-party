@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  debugger;
   window.dancers = [];
 
   $('.addDancerButton').on('click', function(event) {
@@ -24,11 +23,15 @@ $(document).ready(function() {
     // make a dancer with a random position
 
     var dancer = new dancerMakerFunction(
-      $('body').height() * Math.random(),
+      $('body').height() / 3 * Math.random() + 250,
       $('body').width() * Math.random(),
       Math.random() * 1000
     );
     window.dancers.push(dancer);
+    // dancer.$node.mouseover(function() {
+    //   $(this).remove();
+    // });  
+
     $('body').append(dancer.$node);
   });
   $('.lineUpDancers').on('click', function(event) {
@@ -37,5 +40,31 @@ $(document).ready(function() {
       window.dancers[i].$node.animate({ left: 10 }, 1000, function() {});
     }
   });
+  
+  $('.pushApartDancers').on('click', function(event) {
+
+    var currentClosestDistance;
+    var closestIndexes;
+    
+    for (var i = 0; i < window.dancers.length; i++) {
+      var firstLeftPosition = window.dancers[i].position().left;
+      var firstTopPosition = window.dancers[i].position().top; 
+      
+      for (var j = i; j < window.dancers.length; j++) {
+        var secondLeftPosition = window.dancers[j].position().left;
+        var secondTopPosition = window.dancers[j].position().top; 
+        var left = Math.abs(secondLeftPosition - firstLeftPosition);
+        var top = Math.abs(secondTopPosition - firstTopPosition);
+        
+        if (currentClosest === undefined || Math.pow(top, 2) + Math.pow(left, 2) > currentClosestDistance) {
+          currentClosestDistance = Math.pow(top, 2) + Math.pow(left, 2);
+          closestIndexes = [i, j];
+        }
+      }
+      window.dancers[i].$node.animate({ left: 10 }, 1000, function() {});
+      window.dancers[j].$node.animate({ left: -10 }, 1000, function() {});
+    }
+  });  
+
 });
 

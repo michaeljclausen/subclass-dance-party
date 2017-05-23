@@ -18,6 +18,7 @@ ChangingColorDancer.prototype.step = function() {
   // other effects you can use on a jQuery-wrapped html tag.
   var colorArray = ['yellow', 'blue', 'green', 'red'];
   this.$node.css('border-color', colorArray[index]);
+  this.$node.addClass('changingColorDancer');
   index++;
   if (index > 3) {
     index = 0;

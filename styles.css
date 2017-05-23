@@ -5,6 +5,7 @@ body{
   margin: 0px;
   background-color:#444;
   font-size: 18px;
+  background: url('https://s-media-cache-ak0.pinimg.com/originals/0c/aa/bc/0caabc1720999ea9c056156654d6631d.jpg') no-repeat fixed center;
 }
 body, a:link, a:visited, a:active{
   color: lightblue;
@@ -25,3 +26,17 @@ body, a:link, a:visited, a:active{
   border-radius:20px;
   position:absolute;
 }
+/*.dancer:hover{
+  border-color: white;
+}*/
+.carltonDancer {
+  height: 300px;
+  width: 300px;
+  border: 0;
+  background-size: cover;
+  display: block;
+  position: absolute;
+  background-image: url('https://68.media.tumblr.com/1921bcd13e12643771410200a322cb0e/tumblr_ogs5bcHWUc1udh5n8o1_500.gif')
+}
+
+
